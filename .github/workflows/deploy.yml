@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - 主要
+      - main
 
 permissions:
   contents: read
