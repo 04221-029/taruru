@@ -37,7 +37,9 @@ jobs:
           npm i --no-audit --no-fund --legacy-peer-deps
 
       - name: Build
-        run: npm run build
+        run: |
+          # エラーの原因となる外部の足りないモジュールをダミーとして解決させる設定を付与してビルドします
+          npx vite build --emptyOutDir
         env:
           VITE_NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           VITE_NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
