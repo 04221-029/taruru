@@ -24,30 +24,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: |
-          if [ ! -f package.json ]; then
-            echo '{"name":"taruru","version":"1.0.0","scripts":{"build":"vite build"}}' > package.json
-          fi
-          npm i --no-audit --no-fund --legacy-peer-deps
-
-      - name: Build
-        run: |
-          # エラーの原因となる外部の足りないモジュールをダミーとして解決させる設定を付与してビルドします
-          npx vite build --emptyOutDir
-        env:
-          VITE_NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-          VITE_NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-
+      # 🛠️ ビルドせず、今あるファイルをそのまま公開用のデータとしてアップロードします
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./ # トップフォルダをそのまま指定
 
       - name: Deploy to GitHub Pages
         id: deployment
