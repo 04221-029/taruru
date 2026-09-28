@@ -18,7 +18,8 @@ export default defineConfig({
         '@/components/ui/dialog',
         '@/components/ui/dropdown-menu',
         '@/components/ui/tabs',
-        'lucide-react'
+        'lucide-react',
+        './components/ErrorBoundary' // 👈 今回のエラー原因を追加しました
       ],
     },
   },
