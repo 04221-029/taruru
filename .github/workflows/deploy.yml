@@ -34,7 +34,7 @@ jobs:
           if [ ! -f package.json ]; then
             echo '{"name":"taruru","version":"1.0.0","scripts":{"build":"vite build"}}' > package.json
           fi
-          npm i --no-audit --no-fund
+          npm i --no-audit --no-fund --legacy-peer-deps
 
       - name: Build
         run: npm run build
